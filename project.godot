@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="insufficient_supper"
-run/main_scene="res://levels/main/main.tscn"
+run/main_scene="res://main/main.tscn"
 boot_splash/bg_color=Color( 0.0941176, 0.0784314, 0.145098, 1 )
 config/icon="res://icon.png"
 

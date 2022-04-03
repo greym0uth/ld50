@@ -5,8 +5,9 @@ export(Resource) var active_hotbar_item = load("res://ui/inventory/slot_panel_ac
 
 onready var Slots = get_node("UI/Slots")
 
-onready var Player = get_node("/root/Main/Player")
-onready var Hotbar = get_node("/root/Main/UI/HUD/Hotbar")
+onready var Main = get_node("/root/Main")
+onready var Player = Main.world().get_node("Player")
+onready var Hotbar = Main.ui().get_node("HUD/Hotbar")
 
 var current_slot = 0
 var is_open = false

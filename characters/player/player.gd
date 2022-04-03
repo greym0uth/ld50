@@ -6,8 +6,10 @@ const Storage = preload("res://storage/storage.gd")
 export(int) var speed = 64
 export(int) var interactor_offset = 14
 
-onready var Hotbar = get_node("/root/Main/UI/HUD/Hotbar")
-onready var Objects = get_node("/root/Main/Layers/Objects")
+onready var Main = get_node("/root/Main")
+onready var Hotbar = Main.ui().get_node("HUD/Hotbar")
+onready var Objects = Main.world().get_node("Layers/Objects")
+onready var Items = Main.world().get_node("Layers/Items")
 
 var velocity = Vector2.ZERO
 
@@ -81,8 +83,7 @@ func _process(_delta):
     else:
       var item = Hotbar.try_drop_item()
       if item != null:
-        var world = get_node("/root/Main/Layers/Items")
-        world.add_child(item)
+        Items.add_child(item)
         item.global_position = $Interactor.global_position
         item.get_node("CollisionShape2D").disabled = false
 
