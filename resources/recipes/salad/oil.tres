@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://resources/ingredient_res.gd" type="Script" id=1]
+
+[resource]
+resource_name = "Ingredient"
+script = ExtResource( 1 )
+name = "oil"
+cook = 0
+chop = 0

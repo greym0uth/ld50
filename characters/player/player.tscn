@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://characters/player/player_spriteframes.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://characters/player/player.gd" type="Script" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 5.0
+height = 4.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 0.01
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 16.0
+
+[node name="Player" type="KinematicBody2D"]
+script = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = ExtResource( 1 )
+animation = "down"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Interactor" type="Area2D" parent="."]
+position = Vector2( 0, 14 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactor"]
+shape = SubResource( 2 )
+
+[node name="PickupRadius" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupRadius"]
+shape = SubResource( 3 )
+
+[connection signal="body_entered" from="Interactor" to="." method="_on_Interactor_body_entered"]
+[connection signal="body_exited" from="Interactor" to="." method="_on_Interactor_body_exited"]
+[connection signal="body_entered" from="PickupRadius" to="." method="_on_PickupRadius_body_entered"]
+[connection signal="body_exited" from="PickupRadius" to="." method="_on_PickupRadius_body_exited"]

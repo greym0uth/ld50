@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=7 format=2]
+
+[ext_resource path="res://resources/recipe.gd" type="Script" id=1]
+[ext_resource path="res://resources/recipes/salad/chopped_tomatoes.tres" type="Resource" id=2]
+[ext_resource path="res://resources/recipes/salad/oil.tres" type="Resource" id=3]
+[ext_resource path="res://resources/recipes/salad/chopped_cucumber.tres" type="Resource" id=4]
+[ext_resource path="res://resources/recipes/salad/chopped_lettuce.tres" type="Resource" id=5]
+[ext_resource path="res://resources/recipes/salad/salad.png" type="Texture" id=6]
+
+[resource]
+resource_name = "Recipe"
+script = ExtResource( 1 )
+name = "Salad"
+texture = ExtResource( 6 )
+ingredients = [ ExtResource( 5 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 3 ) ]

@@ -1,0 +1,165 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://characters/player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://levels/main/camera.gd" type="Script" id=2]
+[ext_resource path="res://tilesets.tres" type="TileSet" id=3]
+[ext_resource path="res://ingredients/lettuce.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/inventory/hotbar.gd" type="Script" id=5]
+[ext_resource path="res://ingredients/beef.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ingredients/ingredient.gd" type="Script" id=7]
+[ext_resource path="res://ui/inventory/slot_panel.tres" type="StyleBox" id=8]
+[ext_resource path="res://levels/main/objects.gd" type="Script" id=9]
+[ext_resource path="res://containers/item_container.tscn" type="PackedScene" id=10]
+[ext_resource path="res://containers/pan.tscn" type="PackedScene" id=11]
+[ext_resource path="res://containers/plate.tscn" type="PackedScene" id=12]
+[ext_resource path="res://ingredients/oil.tscn" type="PackedScene" id=13]
+[ext_resource path="res://ingredients/cucumber.tscn" type="PackedScene" id=14]
+[ext_resource path="res://ingredients/tomatoes.tscn" type="PackedScene" id=15]
+[ext_resource path="res://storage/storage.tscn" type="PackedScene" id=16]
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+z_index = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+z_index = 10
+current = true
+zoom = Vector2( 0.25, 0.25 )
+script = ExtResource( 2 )
+
+[node name="Layers" type="Node2D" parent="."]
+
+[node name="Floor" type="TileMap" parent="Layers"]
+z_index = -1
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 16, 16 )
+cell_quadrant_size = 8
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+format = 1
+tile_data = PoolIntArray( -196613, 9, 0, -196612, 9, 0, -196611, 9, 0, -196610, 9, 0, -196609, 9, 0, -262144, 9, 0, -262143, 9, 0, -262142, 9, 0, -262141, 9, 0, -262140, 9, 0, -131077, 9, 0, -131076, 9, 0, -131075, 9, 0, -131074, 9, 0, -131073, 9, 0, -196608, 9, 0, -196607, 9, 0, -196606, 9, 0, -196605, 9, 0, -196604, 9, 0, -65541, 9, 0, -65540, 9, 0, -65539, 9, 0, -65538, 9, 0, -65537, 9, 0, -131072, 9, 0, -131071, 9, 0, -131070, 9, 0, -131069, 9, 0, -131068, 9, 0, -5, 9, 0, -4, 9, 0, -3, 9, 0, -2, 9, 0, -1, 9, 0, -65536, 9, 0, -65535, 9, 0, -65534, 9, 0, -65533, 9, 0, -65532, 9, 0, 65531, 9, 0, 65532, 9, 0, 65533, 9, 0, 65534, 9, 0, 65535, 9, 0, 0, 9, 0, 1, 9, 0, 2, 9, 0, 3, 9, 0, 4, 9, 0, 131067, 9, 0, 131068, 9, 0, 131069, 9, 0, 131070, 9, 0, 131071, 9, 0, 65536, 9, 0, 65537, 9, 0, 65538, 9, 0, 65539, 9, 0, 65540, 9, 0, 196603, 9, 0, 196604, 9, 0, 196605, 9, 0, 196606, 9, 0, 196607, 9, 0, 131072, 9, 0, 131073, 9, 0, 131074, 9, 0, 131075, 9, 0, 131076, 9, 0, 262139, 9, 0, 262140, 9, 0, 262141, 9, 0, 262142, 9, 0, 262143, 9, 0, 196608, 9, 0, 196609, 9, 0, 196610, 9, 0, 196611, 9, 0, 196612, 9, 0, 327675, 9, 0, 327676, 9, 0, 327677, 9, 0, 327678, 9, 0, 327679, 9, 0, 262144, 9, 0, 262145, 9, 0, 262146, 9, 0, 262147, 9, 0, 262148, 9, 0 )
+
+[node name="Walls" type="TileMap" parent="Layers"]
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 16, 16 )
+cell_quadrant_size = 8
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+format = 1
+tile_data = PoolIntArray( -262149, 10, 0, -262148, 11, 0, -262147, 11, 0, -262146, 11, 0, -262145, 11, 0, -327680, 11, 0, -327679, 11, 0, -327678, 11, 0, -327677, 11, 0, -327676, 12, 0, -196613, 13, 0, -196612, 14, 0, -196611, 14, 0, -196610, 14, 0, -196609, 14, 0, -262144, 14, 0, -262143, 14, 0, -262142, 14, 0, -262141, 14, 0, -262140, 15, 0, -131077, 16, 0, -196604, 18, 0, -65541, 16, 0, -131068, 18, 0, -5, 16, 0, -65532, 18, 0, 65531, 16, 0, 4, 18, 0, 131067, 16, 0, 65540, 18, 0, 196603, 16, 0, 131076, 18, 0, 262139, 16, 0, 196612, 18, 0, 327675, 16, 0, 262148, 18, 0, 393211, 14, 0, 393212, 14, 0, 393213, 14, 0, 393214, 14, 0, 393215, 14, 0, 327680, 14, 0, 327681, 14, 0, 327682, 14, 0, 327683, 14, 0, 327684, 14, 0 )
+
+[node name="Objects" type="TileMap" parent="Layers"]
+z_index = 1
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 16, 16 )
+cell_quadrant_size = 8
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+collision_layer = 3
+format = 1
+tile_data = PoolIntArray( -196611, 5, 0, -196610, 1, 0, -196609, 20, 0, -262144, 2, 0, -262142, 4, 0, -262140, 23, 0 )
+script = ExtResource( 9 )
+
+[node name="Items" type="Node2D" parent="Layers"]
+
+[node name="Cucumber2" parent="Layers/Items" instance=ExtResource( 14 )]
+position = Vector2( 26, 52 )
+
+[node name="Beef" parent="Layers/Items" instance=ExtResource( 6 )]
+position = Vector2( -63, 43 )
+linear_damp = 5.0
+angular_damp = -1.0
+script = ExtResource( 7 )
+
+[node name="Beef2" parent="Layers/Items" instance=ExtResource( 6 )]
+position = Vector2( -44, 56 )
+linear_damp = 5.0
+angular_damp = -1.0
+script = ExtResource( 7 )
+
+[node name="Container" parent="Layers/Items" instance=ExtResource( 10 )]
+position = Vector2( 60, -32 )
+
+[node name="Pan" parent="Layers/Items" instance=ExtResource( 11 )]
+position = Vector2( 58, 18 )
+
+[node name="Cucumber" parent="Layers/Items" instance=ExtResource( 14 )]
+position = Vector2( -24, -3 )
+chop_percent = 31.0
+
+[node name="Plate" parent="Layers/Items" instance=ExtResource( 12 )]
+position = Vector2( 27, -21 )
+
+[node name="Plate2" parent="Layers/Items" instance=ExtResource( 12 )]
+position = Vector2( 61, 44 )
+
+[node name="Oil" parent="Layers/Items" instance=ExtResource( 13 )]
+position = Vector2( 26, -40 )
+
+[node name="Oil2" parent="Layers/Items" instance=ExtResource( 13 )]
+position = Vector2( 49, 61 )
+
+[node name="Tomatoes" parent="Layers/Items" instance=ExtResource( 15 )]
+position = Vector2( -48, 22 )
+
+[node name="Lettuce" parent="Layers/Items" instance=ExtResource( 4 )]
+position = Vector2( -61, -32 )
+
+[node name="Lettuce2" parent="Layers/Items" instance=ExtResource( 4 )]
+position = Vector2( -26, -38 )
+chop_percent = 31.0
+
+[node name="Tomatoes2" parent="Layers/Items" instance=ExtResource( 15 )]
+position = Vector2( -26, -20 )
+chop_percent = 31.0
+
+[node name="Storage" parent="Layers/Items" instance=ExtResource( 16 )]
+position = Vector2( -63, -52 )
+
+[node name="UI" type="CanvasLayer" parent="."]
+pause_mode = 2
+layer = 10
+
+[node name="HUD" type="Control" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -16.0
+
+[node name="Hotbar" type="GridContainer" parent="UI/HUD"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -102.0
+margin_top = -48.0
+margin_right = 102.0
+columns = 4
+script = ExtResource( 5 )
+
+[node name="Slot1" type="Panel" parent="UI/HUD/Hotbar"]
+margin_right = 48.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+custom_styles/panel = ExtResource( 8 )
+
+[node name="Slot2" type="Panel" parent="UI/HUD/Hotbar"]
+margin_left = 52.0
+margin_right = 100.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+custom_styles/panel = ExtResource( 8 )
+
+[node name="Slot3" type="Panel" parent="UI/HUD/Hotbar"]
+margin_left = 104.0
+margin_right = 152.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+custom_styles/panel = ExtResource( 8 )
+
+[node name="Slot4" type="Panel" parent="UI/HUD/Hotbar"]
+margin_left = 156.0
+margin_right = 204.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+custom_styles/panel = ExtResource( 8 )
