@@ -114,7 +114,6 @@ func _on_bowl_item_added(_item, container):
   if step != 6 or not is_running:
     return
   
-  print("CHECKING BOWL", container.get_node("Contents").get_child_count())
   if container.get_node("Contents").get_child_count() == 4:
     Objects.disconnect("item_added", self, "_on_bowl_item_added")
     chop_rest.hide()

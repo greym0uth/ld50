@@ -6,6 +6,7 @@ const Ingredient = preload("res://ingredients/ingredient.gd")
 const Recipe = preload("res://resources/recipe.gd")
 
 export(String) var item_name = "Basic Container"
+export(int) var cost = 50
 enum Mix {
   None = 0,
   Mixed = 1
@@ -73,7 +74,6 @@ func is_busy():
   return $Contents.get_child_count() >= max_contents
 
 func update_recipe():
-  print("Checking recipe:")
   for recipe in recipes:
     print(recipe.name, recipe)
     if recipe.matches($Contents.get_children()):

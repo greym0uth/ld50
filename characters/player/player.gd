@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 const ItemContainer = preload("res://containers/item_container.gd")
 const Storage = preload("res://storage/storage.gd")
+const RecipeBoard = preload("res://objects/recipe_board.gd")
 
 export(int) var speed = 64
 export(int) var interactor_offset = 14
@@ -105,7 +106,7 @@ func drop_at_current():
     Objects.try_add_item(item, current_object)
 
 func _on_Interactor_body_entered(body: Node2D):
-  if body is Storage:
+  if body is Storage or body is RecipeBoard:
     current_storage = body
   else:
     var cellv = body.world_to_map($Interactor.global_position)
@@ -113,7 +114,7 @@ func _on_Interactor_body_entered(body: Node2D):
     current_object = Objects.to_key(tile, cellv)
 
 func _on_Interactor_body_exited(body: Node2D):
-  if body is Storage and body == current_storage:
+  if (body is Storage or body is RecipeBoard) and body == current_storage:
     current_storage = null
   else:
     current_object = null
