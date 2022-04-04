@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+signal recipe_complete
+
 const Ingredient = preload("res://ingredients/ingredient.gd")
 const Recipe = preload("res://resources/recipe.gd")
 
@@ -79,4 +81,5 @@ func update_recipe():
       $Sprite.texture = recipe.texture
       $Sprite.region_enabled = false
       $Contents.hide()
+      emit_signal("recipe_complete", self)
       return

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ingredients/oil.tscn" type="PackedScene" id=1]
+[ext_resource path="res://storage/crate.tscn" type="PackedScene" id=2]
+
+[node name="OilCrate" instance=ExtResource( 2 )]
+item_name = "Oil Crate"
+prestock = [ ExtResource( 1 ), ExtResource( 1 ), ExtResource( 1 ), ExtResource( 1 ), ExtResource( 1 ), ExtResource( 1 ), ExtResource( 1 ), ExtResource( 1 ), ExtResource( 1 ), ExtResource( 1 ), ExtResource( 1 ), ExtResource( 1 ), ExtResource( 1 ), ExtResource( 1 ), ExtResource( 1 ), ExtResource( 1 ) ]

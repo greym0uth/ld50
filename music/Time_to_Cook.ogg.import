@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Time_to_Cook.ogg-a72d69cf42f4bec994d7979749da75bb.oggstr"
+
+[deps]
+
+source_file="res://music/Time_to_Cook.ogg"
+dest_files=[ "res://.import/Time_to_Cook.ogg-a72d69cf42f4bec994d7979749da75bb.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

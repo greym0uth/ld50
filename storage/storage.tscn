@@ -8,7 +8,6 @@
 extents = Vector2( 6, 6 )
 
 [node name="Storage" type="StaticBody2D"]
-pause_mode = 2
 collision_layer = 3
 script = ExtResource( 3 )
 

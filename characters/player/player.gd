@@ -18,6 +18,9 @@ var current_storage = null
 var itemsCanPickup = []
 
 func _physics_process(_delta):
+  if Main.is_player_locked():
+    return
+
   var direction = Vector2.ZERO
 
   if Input.is_action_pressed("move_forward"):
@@ -49,11 +52,17 @@ func _physics_process(_delta):
   velocity = move_and_slide(velocity)
 
 func _process(_delta):
+  if Main.is_player_locked():
+    return
+
   if Input.is_action_just_pressed("interact"):
     if current_storage:
       current_storage.open()
     elif current_object:
-      if Objects.can_take(current_object) and Hotbar.can_pickup():
+      var current_item = Hotbar.get_current_item()
+      if current_item != null and (not Objects.is_busy(current_object) or Objects.is_container(current_object)):
+        drop_at_current()
+      elif Objects.can_take(current_object) and Hotbar.can_pickup():
         var item = Objects.try_take_item(current_object)
         if item != null:
           if Hotbar.try_add_item(item):
@@ -70,16 +79,9 @@ func _process(_delta):
   
   if Input.is_action_just_pressed("drop"):
     if current_object != null:
-      print("Placing item in ", current_object)
+      print("trying to place item in ", current_object)
       if not Objects.is_busy(current_object):
-        var item = Hotbar.get_current_item()
-        # If were holding a container and the object is a container we want to transfer so dont drop hotbar item.
-        if not (item is ItemContainer and Objects.is_container(current_object)):
-          item = Hotbar.try_drop_item()
-        else:
-          print("ITEM IS A CONTAINER TYRING TO TRANSFER")
-        if item != null:
-          Objects.try_add_item(item, current_object)
+        drop_at_current()
     else:
       var item = Hotbar.try_drop_item()
       if item != null:
@@ -88,8 +90,19 @@ func _process(_delta):
         item.get_node("CollisionShape2D").disabled = false
 
 
+func drop_at_current():
+  var item = Hotbar.get_current_item()
+  if Objects.from_key(current_object)[0] == 25 and not item is ItemContainer:
+    return
+  # If were holding a container and the object is a container we want to transfer so dont drop hotbar item.
+  if not (item is ItemContainer and Objects.is_container(current_object)):
+    item = Hotbar.try_drop_item()
+  else:
+    print("ITEM IS A CONTAINER TYRING TO TRANSFER")
+  if item != null:
+    Objects.try_add_item(item, current_object)
+
 func _on_Interactor_body_entered(body: Node2D):
-  print(body)
   if body is Storage:
     current_storage = body
   else:
@@ -98,7 +111,6 @@ func _on_Interactor_body_entered(body: Node2D):
     current_object = Objects.to_key(tile, cellv)
 
 func _on_Interactor_body_exited(body: Node2D):
-  print(body)
   if body is Storage and body == current_storage:
     current_storage = null
   else:

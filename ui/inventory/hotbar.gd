@@ -7,6 +7,7 @@ onready var slots = [
   $Slot4,
 ]
 
+var active: bool = true
 var current: int = 0
 
 export(Resource) var default_hotbar_item = load("res://ui/inventory/slot_panel.tres")
@@ -16,16 +17,17 @@ func _ready():
   slots[current].add_stylebox_override("panel", active_hotbar_item)
 
 func _process(_delta):
-  if Input.is_action_just_pressed("ui_next_page"):
-    slots[current].add_stylebox_override("panel", default_hotbar_item)
-    current = (current + 1) % slots.size()
-    slots[current].add_stylebox_override("panel", active_hotbar_item)
-  if Input.is_action_just_pressed("ui_prev_page"):
-    slots[current].add_stylebox_override("panel", default_hotbar_item)
-    current = current - 1 % slots.size()
-    if current < 0:
-      current = slots.size() - 1
-    slots[current].add_stylebox_override("panel", active_hotbar_item)
+  if active:
+    if Input.is_action_just_pressed("ui_next_page"):
+      slots[current].add_stylebox_override("panel", default_hotbar_item)
+      current = (current + 1) % slots.size()
+      slots[current].add_stylebox_override("panel", active_hotbar_item)
+    if Input.is_action_just_pressed("ui_prev_page"):
+      slots[current].add_stylebox_override("panel", default_hotbar_item)
+      current = current - 1 % slots.size()
+      if current < 0:
+        current = slots.size() - 1
+      slots[current].add_stylebox_override("panel", active_hotbar_item)
 
 
 func can_pickup() -> bool:
@@ -68,3 +70,16 @@ func get_current_item():
   if slot == null:
     return null
   return slot.get_child(0)
+
+func set_active(new_active: bool):
+  active = new_active
+  if active:
+    slots[current].add_stylebox_override("panel", active_hotbar_item)
+  else:
+    slots[current].add_stylebox_override("panel", default_hotbar_item)
+
+func set_current(new_current: int):
+  slots[current].add_stylebox_override("panel", default_hotbar_item)
+  current = new_current
+  if active:
+    slots[current].add_stylebox_override("panel", active_hotbar_item)

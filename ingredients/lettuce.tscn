@@ -4,3 +4,6 @@
 
 [node name="Lettuce" instance=ExtResource( 1 )]
 ident = "lettuce"
+diced_at = 95
+minced_at = 96
+ground_at = 97

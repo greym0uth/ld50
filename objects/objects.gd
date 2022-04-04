@@ -1,7 +1,15 @@
 extends TileMap
 
+signal item_added
+signal item_added_to_container
+signal item_taken
+signal item_chopped
+signal order_sent
+
 const Ingredient = preload("res://ingredients/ingredient.gd")
 const ItemContainer = preload("res://containers/item_container.gd")
+
+onready var Main = get_node("/root/Main")
 
 var items = Dictionary()
 
@@ -9,7 +17,7 @@ func to_key(id: int, cellv: Vector2) -> String:
   return String(id) + " " + String(cellv.x) + "," + String(cellv.y)
 
 func from_key(key: String):
-  var split = key.split(" ");
+  var split = key.split(" ")
   var id = int(split[0])
   var cv_split = split[1].split(",")
   var cellv = Vector2(int(cv_split[0]), int(cv_split[1]))
@@ -48,6 +56,7 @@ func try_add_item(item: RigidBody2D, key: String):
         return key
       print("Unable to transfer contents to new container")
     elif items[key].try_add_item(item) != null:
+      emit_signal("item_added_to_container", item, items[key])
       return key
     return null
   else:
@@ -58,6 +67,7 @@ func try_add_item(item: RigidBody2D, key: String):
     item.position = map_to_world(parts[1]) + Vector2(8, 4)
     item.get_node("Sprite").scale = Vector2(0.5, 0.5)
     add_child(item)
+    emit_signal("item_added", parts[0], parts[1], item)
     return key
 
 func try_take_item(key: String):
@@ -65,6 +75,7 @@ func try_take_item(key: String):
     var item = items[key]
     remove_child(item)
     items.erase(key)
+    emit_signal("item_taken", item)
     return item
   else:
     return null
@@ -73,6 +84,7 @@ func do_process(id: int, item: Node2D, delta: float, key: String):
   match id:
     19, 20, 21, 22:
       item.do_chop(10 * delta)
+      emit_signal("item_chopped", item)
     4:
       if item is ItemContainer:
         item.do_cook(10 * delta)
@@ -80,6 +92,13 @@ func do_process(id: int, item: Node2D, delta: float, key: String):
       remove_child(item)
       items.erase(key)
       item.queue_free()
+    25:
+      # TODO: Give cash
+      Main.order().complete(item)
+      remove_child(item)
+      items.erase(key)
+      item.queue_free()
+      emit_signal("order_sent")
 
 func _process(delta):
   for key in items.keys():
