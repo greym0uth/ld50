@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=2]
+[gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://levels/object_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://ui/inventory/hotbar.gd" type="Script" id=2]
@@ -128,9 +128,9 @@ region = Rect2( 0, 352, 16, 16 )
 atlas = ExtResource( 30 )
 region = Rect2( 0, 480, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=28]
 atlas = ExtResource( 31 )
-region = Rect2( 128, 80, 16, 16 )
+region = Rect2( 128, 32, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=26]
 atlas = ExtResource( 32 )
@@ -139,6 +139,10 @@ region = Rect2( 0, 256, 16, 16 )
 [sub_resource type="AtlasTexture" id=27]
 atlas = ExtResource( 30 )
 region = Rect2( 0, 384, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 31 )
+region = Rect2( 128, 80, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 31 )
@@ -793,7 +797,7 @@ rect_min_size = Vector2( 32, 32 )
 [node name="TextureRect2" type="TextureRect" parent="UI/Menu/Pause/Controls/NextItem/Control3"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = SubResource( 6 )
+texture = SubResource( 28 )
 expand = true
 
 [node name="LastItem" type="HBoxContainer" parent="UI/Menu/Pause/Controls"]
