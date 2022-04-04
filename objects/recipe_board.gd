@@ -36,6 +36,9 @@ func set_current_recipe(new_recipe: int):
 
   
 func _process(_delta):
+  if not is_open:
+    return
+
   if Input.is_action_just_pressed("ui_left"):
     set_current_recipe(current_recipe - 1)
   if Input.is_action_just_pressed("ui_right"):

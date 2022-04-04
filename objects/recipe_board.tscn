@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://objects/recipe_board.png" type="Texture" id=1]
 [ext_resource path="res://resources/recipes/salad/salad-recipe.png" type="Texture" id=2]
 [ext_resource path="res://objects/recipe_board.gd" type="Script" id=3]
+[ext_resource path="res://resources/recipes/steak/steak-recipe.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5.5, 5.5 )
@@ -38,5 +39,26 @@ rect_min_size = Vector2( 192, 352 )
 margin_right = 304.0
 margin_bottom = 450.0
 texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="Steak" type="MarginContainer" parent="Recipes"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -152.0
+margin_top = -225.0
+margin_right = 152.0
+margin_bottom = 225.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 192, 352 )
+
+[node name="Steak" type="TextureRect" parent="Recipes/Steak"]
+margin_right = 304.0
+margin_bottom = 450.0
+texture = ExtResource( 4 )
 expand = true
 stretch_mode = 6

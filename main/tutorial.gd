@@ -120,7 +120,7 @@ func _on_bowl_item_added(_item, container):
     plate_transfer.show()
 
     if plate_item == null:
-      print("THE PLATE WASNT SET DOWN")
+      # print("THE PLATE WASNT SET DOWN")
       return
 
     plate_item.connect("recipe_complete", self, "_on_recipe_complete")

@@ -5,6 +5,8 @@
 [node name="Oil" instance=ExtResource( 1 )]
 item_name = "Oil"
 ident = "oil"
+cook_modifier = 0.0
+chop_modifier = 0.0
 
 [node name="Sprite" parent="." index="0"]
 region_rect = Rect2( 48, 0, 16, 16 )

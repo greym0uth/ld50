@@ -75,9 +75,9 @@ func is_busy():
 
 func update_recipe():
   for recipe in recipes:
-    print(recipe.name, recipe)
+    # print("Checking:" + recipe.name, recipe)
     if recipe.matches($Contents.get_children()):
-      print(recipe.name + " was created!")
+      # print(recipe.name + " was created!")
       current_recipe = recipe
       $Sprite.texture = recipe.texture
       $Sprite.region_enabled = false

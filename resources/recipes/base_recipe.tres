@@ -6,4 +6,5 @@
 resource_name = "Recipe"
 script = ExtResource( 1 )
 name = ""
+value = 0
 ingredients = [  ]

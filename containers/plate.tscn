@@ -1,11 +1,12 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://containers/item_container.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/recipes/salad/salad.tres" type="Resource" id=2]
+[ext_resource path="res://resources/recipes/steak/steak.tres" type="Resource" id=3]
 
 [node name="Plate" instance=ExtResource( 1 )]
 item_name = "Plate"
-recipes = [ ExtResource( 2 ) ]
+recipes = [ ExtResource( 2 ), ExtResource( 3 ) ]
 
 [node name="Sprite" parent="." index="0"]
 region_rect = Rect2( 48, 0, 16, 16 )

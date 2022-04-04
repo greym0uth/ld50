@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://resources/recipe.gd" type="Script" id=1]
+[ext_resource path="res://resources/recipes/steak/steak.png" type="Texture" id=2]
+[ext_resource path="res://resources/recipes/steak/cooked_beef.tres" type="Resource" id=3]
+[ext_resource path="res://resources/recipes/salad/oil.tres" type="Resource" id=4]
+
+[resource]
+resource_name = "Recipe"
+script = ExtResource( 1 )
+name = "Steak"
+value = 80
+texture = ExtResource( 2 )
+ingredients = [ ExtResource( 3 ), ExtResource( 4 ) ]

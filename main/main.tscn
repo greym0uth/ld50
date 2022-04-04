@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://levels/object_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://ui/inventory/hotbar.gd" type="Script" id=2]
@@ -38,6 +38,8 @@
 [ext_resource path="res://storage/storage.gd" type="Script" id=36]
 [ext_resource path="res://containers/pan.tscn" type="PackedScene" id=37]
 [ext_resource path="res://objects/recipe_board.tscn" type="PackedScene" id=38]
+[ext_resource path="res://resources/recipes/steak/steak.tres" type="Resource" id=39]
+[ext_resource path="res://storage/shop/beef_crate.tscn" type="PackedScene" id=40]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 5 )
@@ -183,7 +185,7 @@ cell_quadrant_size = 8
 cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
 collision_layer = 3
 format = 1
-tile_data = PoolIntArray( -131075, 5, 0, -131074, 1, 0, -131073, 21, 0, -196607, 4, 0, -196605, 23, 0, -65536, 0, 0, -65535, 1, 0, -65534, 2, 0, 131069, 0, 0, 131070, 25, 0, 131071, 1, 0, 65536, 1, 0, 65537, 1, 0, 65538, 2, 0, 196608, 0, 0, 196609, 1, 0, 196610, 2, 0 )
+tile_data = PoolIntArray( -131075, 5, 0, -131074, 1, 0, -131073, 21, 0, -196607, 4, 0, -196605, 23, 0, -65536, 0, 0, -65535, 2, 0, 131069, 0, 0, 131070, 25, 0, 131071, 1, 0, 65536, 1, 0, 65537, 2, 0, 196608, 3, 0 )
 script = ExtResource( 4 )
 
 [node name="Items" type="Node2D" parent="World/Layers"]
@@ -192,7 +194,7 @@ script = ExtResource( 4 )
 pause_mode = 2
 position = Vector2( 304, 704 )
 scale = Vector2( 2, 2 )
-prestock = [ ExtResource( 29 ), ExtResource( 20 ), ExtResource( 35 ), ExtResource( 34 ), ExtResource( 37 ) ]
+prestock = [ ExtResource( 29 ), ExtResource( 20 ), ExtResource( 35 ), ExtResource( 34 ), ExtResource( 37 ), ExtResource( 40 ) ]
 
 [node name="Fridge" parent="World/Layers/Items" instance=ExtResource( 11 )]
 pause_mode = 2
@@ -204,7 +206,7 @@ prestock = [ ExtResource( 12 ), ExtResource( 15 ), ExtResource( 13 ), ExtResourc
 pause_mode = 2
 position = Vector2( 41, -42 )
 script = ExtResource( 36 )
-prestock = [ ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 25 ), ExtResource( 25 ), ExtResource( 25 ), ExtResource( 25 ) ]
+prestock = [ ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 25 ), ExtResource( 25 ), ExtResource( 25 ), ExtResource( 25 ), ExtResource( 37 ), ExtResource( 37 ), ExtResource( 37 ), ExtResource( 37 ) ]
 
 [node name="RecipeBoard" parent="World/Layers/Items" instance=ExtResource( 38 )]
 position = Vector2( 9, -42 )
@@ -233,7 +235,7 @@ camera = NodePath("../KitchenCamera")
 position = Vector2( -32, 0 )
 z_index = 100
 script = ExtResource( 17 )
-recipes = [ ExtResource( 22 ) ]
+recipes = [ ExtResource( 22 ), ExtResource( 39 ) ]
 
 [node name="Panel" type="Panel" parent="World/Order"]
 visible = false
@@ -428,12 +430,12 @@ text = "Back"
 visible = false
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 260.0
+margin_right = 299.0
 margin_bottom = 269.0
 alignment = 1
 
 [node name="Label" type="Label" parent="UI/Menu/Pause/Controls"]
-margin_right = 253.0
+margin_right = 292.0
 margin_bottom = 18.0
 custom_fonts/font = SubResource( 3 )
 text = "Controls"
@@ -441,7 +443,7 @@ align = 1
 
 [node name="Move" type="HBoxContainer" parent="UI/Menu/Pause/Controls"]
 margin_top = 22.0
-margin_right = 253.0
+margin_right = 292.0
 margin_bottom = 90.0
 
 [node name="Drop2" type="Label" parent="UI/Menu/Pause/Controls/Move"]
@@ -583,19 +585,19 @@ expand = true
 
 [node name="UseTake" type="HBoxContainer" parent="UI/Menu/Pause/Controls"]
 margin_top = 94.0
-margin_right = 253.0
+margin_right = 292.0
 margin_bottom = 126.0
 
 [node name="Drop2" type="Label" parent="UI/Menu/Pause/Controls/UseTake"]
 margin_top = 7.0
-margin_right = 75.0
+margin_right = 124.0
 margin_bottom = 25.0
 custom_fonts/font = SubResource( 3 )
-text = "Take/Put:"
+text = "Take/Put/Open:"
 
 [node name="Control" type="Control" parent="UI/Menu/Pause/Controls/UseTake"]
-margin_left = 79.0
-margin_right = 111.0
+margin_left = 128.0
+margin_right = 160.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
 
@@ -606,13 +608,13 @@ texture = SubResource( 17 )
 expand = true
 
 [node name="VSeparator" type="VSeparator" parent="UI/Menu/Pause/Controls/UseTake"]
-margin_left = 115.0
-margin_right = 119.0
+margin_left = 164.0
+margin_right = 168.0
 margin_bottom = 32.0
 
 [node name="Control2" type="Control" parent="UI/Menu/Pause/Controls/UseTake"]
-margin_left = 123.0
-margin_right = 155.0
+margin_left = 172.0
+margin_right = 204.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
 
@@ -623,13 +625,13 @@ texture = SubResource( 18 )
 expand = true
 
 [node name="VSeparator2" type="VSeparator" parent="UI/Menu/Pause/Controls/UseTake"]
-margin_left = 159.0
-margin_right = 163.0
+margin_left = 208.0
+margin_right = 212.0
 margin_bottom = 32.0
 
 [node name="Control3" type="Control" parent="UI/Menu/Pause/Controls/UseTake"]
-margin_left = 167.0
-margin_right = 199.0
+margin_left = 216.0
+margin_right = 248.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
 
@@ -640,13 +642,13 @@ texture = SubResource( 19 )
 expand = true
 
 [node name="VSeparator3" type="VSeparator" parent="UI/Menu/Pause/Controls/UseTake"]
-margin_left = 203.0
-margin_right = 207.0
+margin_left = 252.0
+margin_right = 256.0
 margin_bottom = 32.0
 
 [node name="Control4" type="Control" parent="UI/Menu/Pause/Controls/UseTake"]
-margin_left = 211.0
-margin_right = 243.0
+margin_left = 260.0
+margin_right = 292.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
 
@@ -658,7 +660,7 @@ expand = true
 
 [node name="Drop" type="HBoxContainer" parent="UI/Menu/Pause/Controls"]
 margin_top = 130.0
-margin_right = 253.0
+margin_right = 292.0
 margin_bottom = 162.0
 
 [node name="Drop2" type="Label" parent="UI/Menu/Pause/Controls/Drop"]
@@ -738,7 +740,7 @@ expand = true
 
 [node name="NextItem" type="HBoxContainer" parent="UI/Menu/Pause/Controls"]
 margin_top = 166.0
-margin_right = 253.0
+margin_right = 292.0
 margin_bottom = 198.0
 
 [node name="Drop2" type="Label" parent="UI/Menu/Pause/Controls/NextItem"]
@@ -796,7 +798,7 @@ expand = true
 
 [node name="LastItem" type="HBoxContainer" parent="UI/Menu/Pause/Controls"]
 margin_top = 202.0
-margin_right = 253.0
+margin_right = 292.0
 margin_bottom = 234.0
 
 [node name="Drop2" type="Label" parent="UI/Menu/Pause/Controls/LastItem"]
@@ -874,7 +876,7 @@ expand = true
 
 [node name="Back" type="Button" parent="UI/Menu/Pause/Controls"]
 margin_top = 238.0
-margin_right = 253.0
+margin_right = 292.0
 margin_bottom = 262.0
 theme = ExtResource( 26 )
 text = "Back"
@@ -1104,21 +1106,23 @@ grow_vertical = 0
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 269.0
-margin_bottom = 137.0
+margin_bottom = 179.0
 
 [node name="Label" type="Label" parent="UI/Tutorial/TutorialComplete/VBoxContainer"]
 margin_right = 262.0
-margin_bottom = 102.0
+margin_bottom = 144.0
 text = "Woohoo! You made some cash!
 That's all I have to teach you feel
 free to head to the store outside
-and get some more ingredients 
-and finish a couple more orders."
+and get some more ingredients  
+and finish a couple more orders.
+Also check out the recipe book 
+next to the stove."
 
 [node name="Complete" type="Button" parent="UI/Tutorial/TutorialComplete/VBoxContainer"]
-margin_top = 106.0
+margin_top = 148.0
 margin_right = 262.0
-margin_bottom = 130.0
+margin_bottom = 172.0
 text = "Finish"
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]

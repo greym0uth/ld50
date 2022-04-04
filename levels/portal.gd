@@ -12,5 +12,5 @@ func _on_Portal_body_entered(body: Node2D):
   if body is Player and exit_node != null:
     body.global_position = exit_node.global_position
     if camera_node != null:
-      print("Changing camera", camera_node)
+      # print("Changing camera", camera_node)
       camera_node.make_current()

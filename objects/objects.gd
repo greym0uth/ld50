@@ -52,9 +52,9 @@ func try_add_item(item: RigidBody2D, key: String):
     if item is ItemContainer:
       var c = items[key].try_transfer_contents(item)
       if c != null:
-        print("Transfered contents to new container")
+        # print("Transfered contents to new container")
         return key
-      print("Unable to transfer contents to new container")
+      # print("Unable to transfer contents to new container")
     elif items[key].try_add_item(item) != null:
       emit_signal("item_added_to_container", item, items[key])
       return key

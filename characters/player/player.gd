@@ -67,20 +67,21 @@ func _process(_delta):
         var item = Objects.try_take_item(current_object)
         if item != null:
           if Hotbar.try_add_item(item):
-            print("Item was picked up from object")
+            pass
+            # print("Item was picked up from object")
         else:
-          print("IDk what happened the item is gone now")
-      pass
+          # print("IDk what happened the item is gone now")
+          pass
     elif itemsCanPickup.size() > 0:
       var item = itemsCanPickup.pop_front()
       item.get_parent().remove_child(item)
       if Hotbar.try_add_item(item) != null:
         item.rotation = 0
-        print("Added to inventory")
+        # print("Added to inventory")
   
   if Input.is_action_just_pressed("drop"):
     if current_object != null:
-      print("trying to place item in ", current_object)
+      # print("trying to place item in ", current_object)
       if not Objects.is_busy(current_object):
         drop_at_current()
     else:
