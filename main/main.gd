@@ -24,6 +24,9 @@ func get_cash():
 func subtract_cash(amt: int):
   return set_cash(cash - amt)
 
+func add_cash(amt: int):
+  return set_cash(cash + amt)
+
 func set_cash(amt: int):
   cash = amt
   update_cash()

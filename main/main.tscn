@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://levels/object_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://ui/inventory/hotbar.gd" type="Script" id=2]
@@ -29,6 +29,13 @@
 [ext_resource path="res://main/tutorial.gd" type="Script" id=27]
 [ext_resource path="res://ui/notifications/here.tscn" type="PackedScene" id=28]
 [ext_resource path="res://storage/shop/tomato_crate.tscn" type="PackedScene" id=29]
+[ext_resource path="res://ui/controller_ps.png" type="Texture" id=30]
+[ext_resource path="res://ui/kb_dark_all.png" type="Texture" id=31]
+[ext_resource path="res://ui/controller_xbox.png" type="Texture" id=32]
+[ext_resource path="res://ui/sticks.png" type="Texture" id=33]
+[ext_resource path="res://storage/shop/oil_crate.tscn" type="PackedScene" id=34]
+[ext_resource path="res://storage/shop/cucumber_crate.tscn" type="PackedScene" id=35]
+[ext_resource path="res://storage/storage.gd" type="Script" id=36]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 5 )
@@ -40,6 +47,98 @@ font_data = ExtResource( 23 )
 
 [sub_resource type="DynamicFont" id=3]
 font_data = ExtResource( 23 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 33 )
+region = Rect2( 0, 48, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 31 )
+region = Rect2( 0, 352, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 31 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 31 )
+region = Rect2( 0, 288, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 31 )
+region = Rect2( 0, 48, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 31 )
+region = Rect2( 192, 192, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 31 )
+region = Rect2( 192, 208, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 31 )
+region = Rect2( 192, 224, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 31 )
+region = Rect2( 192, 240, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 32 )
+region = Rect2( 0, 64, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 30 )
+region = Rect2( 0, 64, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 31 )
+region = Rect2( 128, 128, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 31 )
+region = Rect2( 0, 64, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 32 )
+region = Rect2( 0, 96, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 30 )
+region = Rect2( 0, 96, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 31 )
+region = Rect2( 128, 80, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 31 )
+region = Rect2( 0, 256, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 32 )
+region = Rect2( 0, 352, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 30 )
+region = Rect2( 0, 480, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 31 )
+region = Rect2( 128, 80, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 32 )
+region = Rect2( 0, 256, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 30 )
+region = Rect2( 0, 384, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 31 )
+region = Rect2( 128, 32, 16, 16 )
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 7 )
@@ -91,16 +190,18 @@ script = ExtResource( 4 )
 pause_mode = 2
 position = Vector2( 304, 704 )
 scale = Vector2( 2, 2 )
-prestock = [ ExtResource( 29 ), ExtResource( 20 ) ]
+prestock = [ ExtResource( 29 ), ExtResource( 20 ), ExtResource( 35 ), ExtResource( 34 ) ]
 
 [node name="Fridge" parent="World/Layers/Items" instance=ExtResource( 11 )]
 pause_mode = 2
 position = Vector2( -54, -42 )
-prestock = [ ExtResource( 12 ), ExtResource( 15 ), ExtResource( 13 ), ExtResource( 14 ) ]
+script = ExtResource( 36 )
+prestock = [ ExtResource( 12 ), ExtResource( 15 ), ExtResource( 13 ), ExtResource( 14 ), null, null, null, null, null, null, null, null, ExtResource( 12 ), ExtResource( 15 ), ExtResource( 13 ), ExtResource( 14 ) ]
 
 [node name="Cabinet" parent="World/Layers/Items" instance=ExtResource( 16 )]
 pause_mode = 2
 position = Vector2( 41, -42 )
+script = ExtResource( 36 )
 prestock = [ ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 25 ), ExtResource( 25 ), ExtResource( 25 ), ExtResource( 25 ) ]
 
 [node name="OutdoorCamera" type="Camera2D" parent="World"]
@@ -241,12 +342,12 @@ script = ExtResource( 24 )
 [node name="Menu" type="VBoxContainer" parent="UI/Menu/Pause"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 79.0
-margin_bottom = 109.0
+margin_right = 87.0
+margin_bottom = 137.0
 alignment = 1
 
 [node name="Label" type="Label" parent="UI/Menu/Pause/Menu"]
-margin_right = 72.0
+margin_right = 80.0
 margin_bottom = 18.0
 custom_fonts/font = SubResource( 3 )
 text = "Menu"
@@ -254,22 +355,29 @@ align = 1
 
 [node name="Resume" type="Button" parent="UI/Menu/Pause/Menu"]
 margin_top = 22.0
-margin_right = 72.0
+margin_right = 80.0
 margin_bottom = 46.0
 theme = ExtResource( 26 )
 text = "Resume"
 
-[node name="Options" type="Button" parent="UI/Menu/Pause/Menu"]
+[node name="Controls" type="Button" parent="UI/Menu/Pause/Menu"]
 margin_top = 50.0
-margin_right = 72.0
+margin_right = 80.0
 margin_bottom = 74.0
+theme = ExtResource( 26 )
+text = "Controls"
+
+[node name="Options" type="Button" parent="UI/Menu/Pause/Menu"]
+margin_top = 78.0
+margin_right = 80.0
+margin_bottom = 102.0
 theme = ExtResource( 26 )
 text = "Options"
 
 [node name="Quit" type="Button" parent="UI/Menu/Pause/Menu"]
-margin_top = 78.0
-margin_right = 72.0
-margin_bottom = 102.0
+margin_top = 106.0
+margin_right = 80.0
+margin_bottom = 130.0
 theme = ExtResource( 26 )
 text = "Quit"
 
@@ -289,6 +397,7 @@ text = "Options"
 align = 1
 
 [node name="Reset" type="Button" parent="UI/Menu/Pause/Options"]
+visible = false
 margin_top = 22.0
 margin_right = 147.0
 margin_bottom = 46.0
@@ -307,6 +416,461 @@ text = "BG Music"
 margin_top = 94.0
 margin_right = 147.0
 margin_bottom = 118.0
+theme = ExtResource( 26 )
+text = "Back"
+
+[node name="Controls" type="VBoxContainer" parent="UI/Menu/Pause"]
+visible = false
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 260.0
+margin_bottom = 269.0
+alignment = 1
+
+[node name="Label" type="Label" parent="UI/Menu/Pause/Controls"]
+margin_right = 253.0
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 3 )
+text = "Controls"
+align = 1
+
+[node name="Move" type="HBoxContainer" parent="UI/Menu/Pause/Controls"]
+margin_top = 22.0
+margin_right = 253.0
+margin_bottom = 90.0
+
+[node name="Drop2" type="Label" parent="UI/Menu/Pause/Controls/Move"]
+margin_top = 25.0
+margin_right = 38.0
+margin_bottom = 43.0
+custom_fonts/font = SubResource( 3 )
+text = "Move"
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/Menu/Pause/Controls/Move"]
+margin_left = 42.0
+margin_right = 74.0
+margin_bottom = 68.0
+
+[node name="Control" type="Control" parent="UI/Menu/Pause/Controls/Move/CenterContainer"]
+margin_top = 18.0
+margin_right = 32.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 32, 32 )
+
+[node name="TextureRect4" type="TextureRect" parent="UI/Menu/Pause/Controls/Move/CenterContainer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 4 )
+expand = true
+
+[node name="VSeparator" type="VSeparator" parent="UI/Menu/Pause/Controls/Move"]
+margin_left = 78.0
+margin_right = 82.0
+margin_bottom = 68.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Menu/Pause/Controls/Move"]
+margin_left = 86.0
+margin_right = 226.0
+margin_bottom = 68.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Menu/Pause/Controls/Move/VBoxContainer"]
+margin_right = 140.0
+margin_bottom = 32.0
+
+[node name="Control2" type="Control" parent="UI/Menu/Pause/Controls/Move/VBoxContainer/HBoxContainer"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+
+[node name="TextureRect3" type="TextureRect" parent="UI/Menu/Pause/Controls/Move/VBoxContainer/HBoxContainer/Control2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 9 )
+expand = true
+
+[node name="Control3" type="Control" parent="UI/Menu/Pause/Controls/Move/VBoxContainer/HBoxContainer"]
+margin_left = 36.0
+margin_right = 68.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+
+[node name="TextureRect3" type="TextureRect" parent="UI/Menu/Pause/Controls/Move/VBoxContainer/HBoxContainer/Control3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 10 )
+expand = true
+
+[node name="Control4" type="Control" parent="UI/Menu/Pause/Controls/Move/VBoxContainer/HBoxContainer"]
+margin_left = 72.0
+margin_right = 104.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+
+[node name="TextureRect3" type="TextureRect" parent="UI/Menu/Pause/Controls/Move/VBoxContainer/HBoxContainer/Control4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 11 )
+expand = true
+
+[node name="Control5" type="Control" parent="UI/Menu/Pause/Controls/Move/VBoxContainer/HBoxContainer"]
+margin_left = 108.0
+margin_right = 140.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+
+[node name="TextureRect3" type="TextureRect" parent="UI/Menu/Pause/Controls/Move/VBoxContainer/HBoxContainer/Control5"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 12 )
+expand = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI/Menu/Pause/Controls/Move/VBoxContainer"]
+margin_top = 36.0
+margin_right = 140.0
+margin_bottom = 68.0
+
+[node name="Control2" type="Control" parent="UI/Menu/Pause/Controls/Move/VBoxContainer/HBoxContainer2"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+
+[node name="TextureRect3" type="TextureRect" parent="UI/Menu/Pause/Controls/Move/VBoxContainer/HBoxContainer2/Control2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 13 )
+expand = true
+
+[node name="Control3" type="Control" parent="UI/Menu/Pause/Controls/Move/VBoxContainer/HBoxContainer2"]
+margin_left = 36.0
+margin_right = 68.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+
+[node name="TextureRect3" type="TextureRect" parent="UI/Menu/Pause/Controls/Move/VBoxContainer/HBoxContainer2/Control3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 14 )
+expand = true
+
+[node name="Control4" type="Control" parent="UI/Menu/Pause/Controls/Move/VBoxContainer/HBoxContainer2"]
+margin_left = 72.0
+margin_right = 104.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+
+[node name="TextureRect3" type="TextureRect" parent="UI/Menu/Pause/Controls/Move/VBoxContainer/HBoxContainer2/Control4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 15 )
+expand = true
+
+[node name="Control5" type="Control" parent="UI/Menu/Pause/Controls/Move/VBoxContainer/HBoxContainer2"]
+margin_left = 108.0
+margin_right = 140.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+
+[node name="TextureRect3" type="TextureRect" parent="UI/Menu/Pause/Controls/Move/VBoxContainer/HBoxContainer2/Control5"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 16 )
+expand = true
+
+[node name="UseTake" type="HBoxContainer" parent="UI/Menu/Pause/Controls"]
+margin_top = 94.0
+margin_right = 253.0
+margin_bottom = 126.0
+
+[node name="Drop2" type="Label" parent="UI/Menu/Pause/Controls/UseTake"]
+margin_top = 7.0
+margin_right = 75.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 3 )
+text = "Take/Put:"
+
+[node name="Control" type="Control" parent="UI/Menu/Pause/Controls/UseTake"]
+margin_left = 79.0
+margin_right = 111.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+
+[node name="TextureRect4" type="TextureRect" parent="UI/Menu/Pause/Controls/UseTake/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 17 )
+expand = true
+
+[node name="VSeparator" type="VSeparator" parent="UI/Menu/Pause/Controls/UseTake"]
+margin_left = 115.0
+margin_right = 119.0
+margin_bottom = 32.0
+
+[node name="Control2" type="Control" parent="UI/Menu/Pause/Controls/UseTake"]
+margin_left = 123.0
+margin_right = 155.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+
+[node name="TextureRect3" type="TextureRect" parent="UI/Menu/Pause/Controls/UseTake/Control2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 18 )
+expand = true
+
+[node name="VSeparator2" type="VSeparator" parent="UI/Menu/Pause/Controls/UseTake"]
+margin_left = 159.0
+margin_right = 163.0
+margin_bottom = 32.0
+
+[node name="Control3" type="Control" parent="UI/Menu/Pause/Controls/UseTake"]
+margin_left = 167.0
+margin_right = 199.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+
+[node name="TextureRect2" type="TextureRect" parent="UI/Menu/Pause/Controls/UseTake/Control3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 19 )
+expand = true
+
+[node name="VSeparator3" type="VSeparator" parent="UI/Menu/Pause/Controls/UseTake"]
+margin_left = 203.0
+margin_right = 207.0
+margin_bottom = 32.0
+
+[node name="Control4" type="Control" parent="UI/Menu/Pause/Controls/UseTake"]
+margin_left = 211.0
+margin_right = 243.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+
+[node name="TextureRect2" type="TextureRect" parent="UI/Menu/Pause/Controls/UseTake/Control4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 20 )
+expand = true
+
+[node name="Drop" type="HBoxContainer" parent="UI/Menu/Pause/Controls"]
+margin_top = 130.0
+margin_right = 253.0
+margin_bottom = 162.0
+
+[node name="Drop2" type="Label" parent="UI/Menu/Pause/Controls/Drop"]
+margin_top = 7.0
+margin_right = 41.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 3 )
+text = "Drop:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Menu/Pause/Controls/Drop"]
+margin_left = 45.0
+margin_right = 209.0
+margin_bottom = 32.0
+alignment = 2
+
+[node name="Control" type="Control" parent="UI/Menu/Pause/Controls/Drop/HBoxContainer"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+
+[node name="TextureRect4" type="TextureRect" parent="UI/Menu/Pause/Controls/Drop/HBoxContainer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 21 )
+expand = true
+
+[node name="VSeparator" type="VSeparator" parent="UI/Menu/Pause/Controls/Drop/HBoxContainer"]
+margin_left = 36.0
+margin_right = 40.0
+margin_bottom = 32.0
+
+[node name="Control2" type="Control" parent="UI/Menu/Pause/Controls/Drop/HBoxContainer"]
+margin_left = 44.0
+margin_right = 76.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+
+[node name="TextureRect3" type="TextureRect" parent="UI/Menu/Pause/Controls/Drop/HBoxContainer/Control2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 22 )
+expand = true
+
+[node name="VSeparator2" type="VSeparator" parent="UI/Menu/Pause/Controls/Drop/HBoxContainer"]
+margin_left = 80.0
+margin_right = 84.0
+margin_bottom = 32.0
+
+[node name="Control3" type="Control" parent="UI/Menu/Pause/Controls/Drop/HBoxContainer"]
+margin_left = 88.0
+margin_right = 120.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+
+[node name="TextureRect2" type="TextureRect" parent="UI/Menu/Pause/Controls/Drop/HBoxContainer/Control3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 23 )
+expand = true
+
+[node name="VSeparator3" type="VSeparator" parent="UI/Menu/Pause/Controls/Drop/HBoxContainer"]
+margin_left = 124.0
+margin_right = 128.0
+margin_bottom = 32.0
+
+[node name="Control4" type="Control" parent="UI/Menu/Pause/Controls/Drop/HBoxContainer"]
+margin_left = 132.0
+margin_right = 164.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+
+[node name="TextureRect2" type="TextureRect" parent="UI/Menu/Pause/Controls/Drop/HBoxContainer/Control4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 24 )
+expand = true
+
+[node name="NextItem" type="HBoxContainer" parent="UI/Menu/Pause/Controls"]
+margin_top = 166.0
+margin_right = 253.0
+margin_bottom = 198.0
+
+[node name="Drop2" type="Label" parent="UI/Menu/Pause/Controls/NextItem"]
+margin_top = 7.0
+margin_right = 77.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 3 )
+text = "Next Item:"
+
+[node name="Control" type="Control" parent="UI/Menu/Pause/Controls/NextItem"]
+margin_left = 81.0
+margin_right = 113.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+
+[node name="TextureRect4" type="TextureRect" parent="UI/Menu/Pause/Controls/NextItem/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 8 )
+expand = true
+
+[node name="VSeparator" type="VSeparator" parent="UI/Menu/Pause/Controls/NextItem"]
+margin_left = 117.0
+margin_right = 121.0
+margin_bottom = 32.0
+
+[node name="Control2" type="Control" parent="UI/Menu/Pause/Controls/NextItem"]
+margin_left = 125.0
+margin_right = 157.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+
+[node name="TextureRect3" type="TextureRect" parent="UI/Menu/Pause/Controls/NextItem/Control2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 25 )
+expand = true
+
+[node name="VSeparator2" type="VSeparator" parent="UI/Menu/Pause/Controls/NextItem"]
+margin_left = 161.0
+margin_right = 165.0
+margin_bottom = 32.0
+
+[node name="Control3" type="Control" parent="UI/Menu/Pause/Controls/NextItem"]
+margin_left = 169.0
+margin_right = 201.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+
+[node name="TextureRect2" type="TextureRect" parent="UI/Menu/Pause/Controls/NextItem/Control3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 6 )
+expand = true
+
+[node name="LastItem" type="HBoxContainer" parent="UI/Menu/Pause/Controls"]
+margin_top = 202.0
+margin_right = 253.0
+margin_bottom = 234.0
+
+[node name="Drop2" type="Label" parent="UI/Menu/Pause/Controls/LastItem"]
+margin_top = 7.0
+margin_right = 79.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 3 )
+text = "Prev Item:"
+
+[node name="Control" type="Control" parent="UI/Menu/Pause/Controls/LastItem"]
+margin_left = 83.0
+margin_right = 115.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+
+[node name="TextureRect4" type="TextureRect" parent="UI/Menu/Pause/Controls/LastItem/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 26 )
+expand = true
+
+[node name="VSeparator" type="VSeparator" parent="UI/Menu/Pause/Controls/LastItem"]
+margin_left = 119.0
+margin_right = 123.0
+margin_bottom = 32.0
+
+[node name="Control2" type="Control" parent="UI/Menu/Pause/Controls/LastItem"]
+margin_left = 127.0
+margin_right = 159.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+
+[node name="TextureRect3" type="TextureRect" parent="UI/Menu/Pause/Controls/LastItem/Control2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 27 )
+expand = true
+
+[node name="VSeparator2" type="VSeparator" parent="UI/Menu/Pause/Controls/LastItem"]
+margin_left = 163.0
+margin_right = 167.0
+margin_bottom = 32.0
+
+[node name="Control3" type="Control" parent="UI/Menu/Pause/Controls/LastItem"]
+margin_left = 171.0
+margin_right = 203.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+
+[node name="TextureRect2" type="TextureRect" parent="UI/Menu/Pause/Controls/LastItem/Control3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 6 )
+expand = true
+
+[node name="Drop3" type="Label" parent="UI/Menu/Pause/Controls/LastItem"]
+margin_left = 207.0
+margin_top = 7.0
+margin_right = 217.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 3 )
+text = "+"
+
+[node name="Control4" type="Control" parent="UI/Menu/Pause/Controls/LastItem"]
+margin_left = 221.0
+margin_right = 253.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+
+[node name="TextureRect" type="TextureRect" parent="UI/Menu/Pause/Controls/LastItem/Control4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 7 )
+expand = true
+
+[node name="Back" type="Button" parent="UI/Menu/Pause/Controls"]
+margin_top = 238.0
+margin_right = 253.0
+margin_bottom = 262.0
 theme = ExtResource( 26 )
 text = "Back"
 
@@ -397,7 +961,8 @@ margin_bottom = 81.0
 text = "Let's put those on the table
 by pressing the drop button
 on the table. Then lets grab
-all of our ingredients!"
+all of our ingredients 
+(just the top row of the fridge)!"
 
 [node name="ChopLettuce" type="PanelContainer" parent="UI/Tutorial"]
 visible = false
@@ -559,9 +1124,11 @@ bus = "BGM"
 [connection signal="closed" from="World/Layers/Items/Fridge" to="UI/Tutorial" method="_on_Fridge_closed"]
 [connection signal="closed" from="World/Layers/Items/Cabinet" to="UI/Tutorial" method="_on_Cabinet_closed"]
 [connection signal="pressed" from="UI/Menu/Pause/Menu/Resume" to="UI/Menu/Pause" method="resume"]
+[connection signal="pressed" from="UI/Menu/Pause/Menu/Controls" to="UI/Menu/Pause" method="_on_Controls_pressed"]
 [connection signal="pressed" from="UI/Menu/Pause/Menu/Options" to="UI/Menu/Pause" method="_on_Options_pressed"]
 [connection signal="pressed" from="UI/Menu/Pause/Menu/Quit" to="UI/Menu/Pause" method="quit"]
 [connection signal="pressed" from="UI/Menu/Pause/Options/Music" to="." method="toggle_music"]
 [connection signal="pressed" from="UI/Menu/Pause/Options/Back" to="UI/Menu/Pause" method="_on_Back_pressed"]
+[connection signal="pressed" from="UI/Menu/Pause/Controls/Back" to="UI/Menu/Pause" method="_on_Back_pressed"]
 [connection signal="pressed" from="UI/Tutorial/Welcome/VBoxContainer/Continue" to="UI/Tutorial" method="_on_Welcome_Continue_pressed"]
 [connection signal="pressed" from="UI/Tutorial/TutorialComplete/VBoxContainer/Complete" to="UI/Tutorial" method="_on_complete"]

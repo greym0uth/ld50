@@ -32,7 +32,7 @@ func _on_Welcome_Continue_pressed():
     return
 
   welcome.hide()
-  Main.order().start_random()
+  Main.order().start(0)
   new_order.show()
   Main.world().get_node("Tutorial/GrabBowlPlateHere").show()
   step += 1

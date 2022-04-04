@@ -92,8 +92,10 @@ func _process(_delta):
 
 func drop_at_current():
   var item = Hotbar.get_current_item()
-  if Objects.from_key(current_object)[0] == 25 and not item is ItemContainer:
-    return
+  if Objects.from_key(current_object)[0] == 25:
+    if (not item is ItemContainer) or item.current_recipe == null:
+      return
+
   # If were holding a container and the object is a container we want to transfer so dont drop hotbar item.
   if not (item is ItemContainer and Objects.is_container(current_object)):
     item = Hotbar.try_drop_item()

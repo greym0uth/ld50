@@ -1,5 +1,6 @@
 extends RigidBody2D
 
+export(String) var item_name = "Basic Ingredient"
 export(String) var ident = ""
 export(float, 0, 3, 0.1) var cook_modifier = 1
 export(float, 0, 100, 1) var cook_percent = 0

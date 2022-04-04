@@ -3,6 +3,7 @@
 [ext_resource path="res://ingredients/ingredient.tscn" type="PackedScene" id=1]
 
 [node name="Tomatoes" instance=ExtResource( 1 )]
+item_name = "Tomatoes"
 ident = "tomatoes"
 
 [node name="Sprite" parent="." index="0"]

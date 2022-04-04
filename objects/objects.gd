@@ -93,12 +93,13 @@ func do_process(id: int, item: Node2D, delta: float, key: String):
       items.erase(key)
       item.queue_free()
     25:
-      # TODO: Give cash
+      Main.add_cash(item.current_recipe.value)
       Main.order().complete(item)
       remove_child(item)
       items.erase(key)
       item.queue_free()
       emit_signal("order_sent")
+      Main.order().delayed_start()
 
 func _process(delta):
   for key in items.keys():

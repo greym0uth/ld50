@@ -13,12 +13,14 @@ func resume():
   get_tree().paused = false
   $Menu.show()
   $Options.hide()
+  $Controls.hide()
   hide()
 
 func pause():
   is_just_opened = true
   get_tree().paused = true
   $Options.hide()
+  $Controls.hide()
   show()
   $Menu.get_node("Resume").grab_focus()
 
@@ -27,10 +29,17 @@ func quit():
 
 func _on_Back_pressed():
   $Options.hide()
+  $Controls.hide()
   $Menu.show()
   $Menu.get_node("Resume").grab_focus()
 
 func _on_Options_pressed():
   $Menu.hide()
   $Options.show()
-  $Options.get_node("Reset").grab_focus()
+  $Options.get_node("Music").grab_focus()
+
+
+func _on_Controls_pressed():
+  $Menu.hide()
+  $Controls.show()
+  $Controls.get_node("Back").grab_focus()

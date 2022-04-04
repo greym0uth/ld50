@@ -3,6 +3,7 @@
 [ext_resource path="res://containers/item_container.tscn" type="PackedScene" id=1]
 
 [node name="Pan" instance=ExtResource( 1 )]
+item_name = "Pan"
 can_cook = true
 
 [node name="Sprite" parent="." index="0"]

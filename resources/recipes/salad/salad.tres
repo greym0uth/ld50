@@ -11,5 +11,6 @@
 resource_name = "Recipe"
 script = ExtResource( 1 )
 name = "Salad"
+value = 100
 texture = ExtResource( 6 )
 ingredients = [ ExtResource( 5 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 3 ) ]

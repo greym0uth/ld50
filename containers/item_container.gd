@@ -5,6 +5,7 @@ signal recipe_complete
 const Ingredient = preload("res://ingredients/ingredient.gd")
 const Recipe = preload("res://resources/recipe.gd")
 
+export(String) var item_name = "Basic Container"
 enum Mix {
   None = 0,
   Mixed = 1

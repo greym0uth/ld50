@@ -4,6 +4,7 @@
 [ext_resource path="res://resources/recipes/salad/salad.tres" type="Resource" id=2]
 
 [node name="Plate" instance=ExtResource( 1 )]
+item_name = "Plate"
 recipes = [ ExtResource( 2 ) ]
 
 [node name="Sprite" parent="." index="0"]

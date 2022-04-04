@@ -3,13 +3,15 @@ extends Resource
 const Ingredient = preload("res://ingredients/ingredient.gd")
 
 export(String) var name
+export(int) var value
 export(Texture) var texture
 export(Array, Resource) var ingredients
 
 var translated_ingredients: Dictionary
 
-func _init(r_name = "Base", r_texture = null, r_ingredients = []):
+func _init(r_name = "Base", r_value = 100, r_texture = null, r_ingredients = []):
   name = r_name
+  value = r_value
   texture = r_texture
   ingredients = r_ingredients
 

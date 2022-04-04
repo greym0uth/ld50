@@ -10,7 +10,9 @@ export(String) var item_name = "Basic Storage"
 export(int) var cost = 0
 export(Array, PackedScene) var prestock = []
 
-onready var Slots = get_node("UI/Slots")
+onready var Panel = get_node("UI/Panel")
+onready var Slots = get_node("UI/Panel/VBoxContainer/Slots")
+onready var Selected = get_node("UI/Panel/VBoxContainer/Selected")
 
 onready var Main = get_node("/root/Main")
 onready var Player = Main.world().get_node("Player")
@@ -37,6 +39,22 @@ func set_slot(new_slot: int):
   else:
     Hotbar.set_active(false)
     Slots.get_child(current_slot).add_stylebox_override("panel", active_hotbar_item)
+  
+  update_selected()
+  
+func update_selected():
+  var item = null
+
+  if current_slot < Slots.get_child_count():
+    item = Slots.get_child(current_slot).get_child(0)
+  else:
+    item = Hotbar.get_current_item()
+
+  if item != null:
+    Selected.text = item.item_name
+  else:
+    Selected.text = "Empty"
+
 
 func find_open(skip_current = false):
   if not skip_current:
@@ -56,14 +74,14 @@ func can_put() -> bool:
 func open():
   is_open = true
   is_just_opened = true
-  Slots.show()
+  Panel.show()
   Main.lock_player()
   Hotbar.set_active(false)
   emit_signal("opened", self)
 
 func close():
   is_open = false
-  Slots.hide()
+  Panel.hide()
   Main.unlock_player()
   Hotbar.set_active(true)
   emit_signal("closed", self)
@@ -98,12 +116,16 @@ func _ready():
     if prestock.size() <= slot_number:
       break
 
-    var item = prestock[slot_number].instance()
-    item.sleeping = true
-    item.position = Vector2(24, 24)
-    item.get_node("Sprite").scale = Vector2(2, 2)
-    item.get_node("CollisionShape2D").disabled = true
-    Slots.get_child(slot_number).add_child(item)
+    var item_scn = prestock[slot_number]
+    if item_scn:
+      var item = item_scn.instance()
+      item.sleeping = true
+      item.position = Vector2(24, 24)
+      item.get_node("Sprite").scale = Vector2(2, 2)
+      item.get_node("CollisionShape2D").disabled = true
+      Slots.get_child(slot_number).add_child(item)
+  
+  update_selected()
 
 func _process(_delta):
   if not is_open:
