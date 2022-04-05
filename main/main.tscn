@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://levels/object_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://ui/inventory/hotbar.gd" type="Script" id=2]
@@ -35,7 +35,6 @@
 [ext_resource path="res://ui/sticks.png" type="Texture" id=33]
 [ext_resource path="res://storage/shop/oil_crate.tscn" type="PackedScene" id=34]
 [ext_resource path="res://storage/shop/cucumber_crate.tscn" type="PackedScene" id=35]
-[ext_resource path="res://storage/storage.gd" type="Script" id=36]
 [ext_resource path="res://containers/pan.tscn" type="PackedScene" id=37]
 [ext_resource path="res://objects/recipe_board.tscn" type="PackedScene" id=38]
 [ext_resource path="res://resources/recipes/steak/steak.tres" type="Resource" id=39]
@@ -203,13 +202,11 @@ prestock = [ ExtResource( 29 ), ExtResource( 20 ), ExtResource( 35 ), ExtResourc
 [node name="Fridge" parent="World/Layers/Items" instance=ExtResource( 11 )]
 pause_mode = 2
 position = Vector2( -54, -42 )
-script = ExtResource( 36 )
 prestock = [ ExtResource( 12 ), ExtResource( 15 ), ExtResource( 13 ), ExtResource( 14 ), null, null, null, null, null, null, null, null, ExtResource( 12 ), ExtResource( 15 ), ExtResource( 13 ), ExtResource( 14 ) ]
 
 [node name="Cabinet" parent="World/Layers/Items" instance=ExtResource( 16 )]
 pause_mode = 2
 position = Vector2( 41, -42 )
-script = ExtResource( 36 )
 prestock = [ ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 25 ), ExtResource( 25 ), ExtResource( 25 ), ExtResource( 25 ), ExtResource( 37 ), ExtResource( 37 ), ExtResource( 37 ), ExtResource( 37 ) ]
 
 [node name="RecipeBoard" parent="World/Layers/Items" instance=ExtResource( 38 )]
